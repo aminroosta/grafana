@@ -38,15 +38,10 @@ export class Branding {
   static LoginBackground = LoginBackground;
   static MenuLogo = MenuLogo;
   static LoginBoxBackground = LoginBoxBackground;
-  static AppTitle = 'Grafana';
-  static LoginTitle = 'Welcome to Grafana';
+  static AppTitle = 'سهم شناس';
+  static LoginTitle = 'به سهم شناس خوش آمدید';
   static GetLoginSubTitle = () => {
-    const slogans = [
-      "Don't get in the way of the data",
-      'Your single pane of glass',
-      'Built better together',
-      'Democratising data',
-    ];
+    const slogans = ['تحلیل بنیادی و تکنیکال', 'مرجع تخصصی آموزش بورس', ' ابزارهای کاربردی بورس', 'صفر تا صد بورس'];
     const count = slogans.length;
     return slogans[Math.floor(Math.random() * count)];
   };

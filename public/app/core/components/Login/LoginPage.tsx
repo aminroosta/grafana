@@ -53,7 +53,7 @@ export const LoginPage: FC = () => {
                             variant="link"
                             href="/user/password/send-reset-email"
                           >
-                            Forgot your password?
+                            رمز ورود خود را فراموش کرده اید؟
                           </LinkButton>
                         </HorizontalGroup>
                       ) : (

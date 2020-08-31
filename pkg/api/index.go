@@ -87,7 +87,7 @@ func (hs *HTTPServer) setIndexViewData(c *models.ReqContext) (*dtos.IndexViewDat
 		AppNameBodyClass:        getAppNameBodyClass(hs.License.HasValidLicense()),
 		FavIcon:                 "public/img/fav32.png",
 		AppleTouchIcon:          "public/img/apple-touch-icon.png",
-		AppTitle:                "Grafana",
+		AppTitle:                "سهم شناس",
 	}
 
 	if setting.DisableGravatar {
@@ -109,17 +109,17 @@ func (hs *HTTPServer) setIndexViewData(c *models.ReqContext) (*dtos.IndexViewDat
 
 	if hasEditPermissionInFoldersQuery.Result {
 		children := []*dtos.NavLink{
-			{Text: "Dashboard", Icon: "apps", Url: setting.AppSubUrl + "/dashboard/new"},
+			{Text: "داشبورد", Icon: "apps", Url: setting.AppSubUrl + "/dashboard/new"},
 		}
 
 		if c.OrgRole == models.ROLE_ADMIN || c.OrgRole == models.ROLE_EDITOR {
-			children = append(children, &dtos.NavLink{Text: "Folder", SubTitle: "Create a new folder to organize your dashboards", Id: "folder", Icon: "folder-plus", Url: setting.AppSubUrl + "/dashboards/folder/new"})
+			children = append(children, &dtos.NavLink{Text: "پوشه", SubTitle: "برای سازماندهی داشبورد خود پوشه جدیدی ایجاد کنید", Id: "folder", Icon: "folder-plus", Url: setting.AppSubUrl + "/dashboards/folder/new"})
 		}
 
 		children = append(children, &dtos.NavLink{Text: "Import", SubTitle: "Import dashboard from file or Grafana.com", Id: "import", Icon: "import", Url: setting.AppSubUrl + "/dashboard/import"})
 
 		data.NavTree = append(data.NavTree, &dtos.NavLink{
-			Text:       "Create",
+			Text:       "ساختن",
 			Id:         "create",
 			Icon:       "plus",
 			Url:        setting.AppSubUrl + "/dashboard/new",
@@ -129,17 +129,17 @@ func (hs *HTTPServer) setIndexViewData(c *models.ReqContext) (*dtos.IndexViewDat
 	}
 
 	dashboardChildNavs := []*dtos.NavLink{
-		{Text: "Home", Id: "home", Url: setting.AppSubUrl + "/", Icon: "home-alt", HideFromTabs: true},
-		{Text: "Divider", Divider: true, Id: "divider", HideFromTabs: true},
-		{Text: "Manage", Id: "manage-dashboards", Url: setting.AppSubUrl + "/dashboards", Icon: "sitemap"},
-		{Text: "Playlists", Id: "playlists", Url: setting.AppSubUrl + "/playlists", Icon: "presentation-play"},
-		{Text: "Snapshots", Id: "snapshots", Url: setting.AppSubUrl + "/dashboard/snapshots", Icon: "camera"},
+		{Text: "خانه", Id: "home", Url: setting.AppSubUrl + "/", Icon: "home-alt", HideFromTabs: true},
+		{Text: "جدا کننده", Divider: true, Id: "divider", HideFromTabs: true},
+		{Text: "مدیریت", Id: "manage-dashboards", Url: setting.AppSubUrl + "/dashboards", Icon: "sitemap"},
+		{Text: "پلی-لیست", Id: "playlists", Url: setting.AppSubUrl + "/playlists", Icon: "presentation-play"},
+		{Text: "اسنپ-شات", Id: "snapshots", Url: setting.AppSubUrl + "/dashboard/snapshots", Icon: "camera"},
 	}
 
 	data.NavTree = append(data.NavTree, &dtos.NavLink{
-		Text:       "Dashboards",
+		Text:       "داشبوردها",
 		Id:         "dashboards",
-		SubTitle:   "Manage dashboards & folders",
+		SubTitle:   "مدیریت داشبورد و پوشه ها",
 		Icon:       "apps",
 		Url:        setting.AppSubUrl + "/",
 		SortWeight: dtos.WeightDashboard,
@@ -148,9 +148,9 @@ func (hs *HTTPServer) setIndexViewData(c *models.ReqContext) (*dtos.IndexViewDat
 
 	if setting.ExploreEnabled && (c.OrgRole == models.ROLE_ADMIN || c.OrgRole == models.ROLE_EDITOR || setting.ViewersCanEdit) {
 		data.NavTree = append(data.NavTree, &dtos.NavLink{
-			Text:       "Explore",
+			Text:       "متریک پیشرفته",
 			Id:         "explore",
-			SubTitle:   "Explore your data",
+			SubTitle:   "ایجاد متریک پیشرفته",
 			Icon:       "compass",
 			SortWeight: dtos.WeightExplore,
 			Url:        setting.AppSubUrl + "/explore",
@@ -172,15 +172,15 @@ func (hs *HTTPServer) setIndexViewData(c *models.ReqContext) (*dtos.IndexViewDat
 			HideFromMenu: true,
 			SortWeight:   dtos.WeightProfile,
 			Children: []*dtos.NavLink{
-				{Text: "Preferences", Id: "profile-settings", Url: setting.AppSubUrl + "/profile", Icon: "sliders-v-alt"},
-				{Text: "Change Password", Id: "change-password", Url: setting.AppSubUrl + "/profile/password", Icon: "lock", HideFromMenu: true},
+				{Text: "تنظیمات", Id: "profile-settings", Url: setting.AppSubUrl + "/profile", Icon: "sliders-v-alt"},
+				{Text: "تغییر کلمه عبور", Id: "change-password", Url: setting.AppSubUrl + "/profile/password", Icon: "lock", HideFromMenu: true},
 			},
 		}
 
 		if !setting.DisableSignoutMenu {
 			// add sign out first
 			profileNode.Children = append(profileNode.Children, &dtos.NavLink{
-				Text:         "Sign out",
+				Text:         "خروج",
 				Id:           "sign-out",
 				Url:          setting.AppSubUrl + "/logout",
 				Icon:         "arrow-from-right",
@@ -199,7 +199,7 @@ func (hs *HTTPServer) setIndexViewData(c *models.ReqContext) (*dtos.IndexViewDat
 		}
 
 		data.NavTree = append(data.NavTree, &dtos.NavLink{
-			Text:       "Alerting",
+			Text:       "ایجاد آلارم",
 			SubTitle:   "Alert rules & notifications",
 			Id:         "alerting",
 			Icon:       "bell",
