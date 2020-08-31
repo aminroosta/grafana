@@ -70,6 +70,7 @@ export const getTableStyles = stylesFactory(
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        text-align: right;
       `,
       row: css`
         label: row;
@@ -98,6 +99,7 @@ export const getTableStyles = stylesFactory(
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
+        text-align: right;
       `,
       overflow: css`
         overflow: hidden;
